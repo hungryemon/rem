@@ -25,8 +25,8 @@ abstract class BaseRemController extends BaseController {
         toThemeMode == ThemeMode.dark ? ThemeMode.dark : ThemeMode.light;
 
     Get.changeThemeMode(tempToThemeMode);
-    preferenceManager.setBool(
-        PreferenceManager.KEY_IS_DARK_THEME, toThemeMode == ThemeMode.dark ? true : false);
+    preferenceManager.setBool(PreferenceManager.KEY_IS_DARK_THEME,
+        toThemeMode == ThemeMode.dark ? true : false);
     if (onUpdateTheme != null) {
       onUpdateTheme();
     }

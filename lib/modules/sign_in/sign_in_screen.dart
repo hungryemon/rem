@@ -17,36 +17,36 @@ class SignInScreen extends BaseView<SignInController> {
   Widget body(BuildContext context) {
     return Container(
         width: double.maxFinite,
-        padding: EdgeInsets.symmetric(horizontal: 32.h, vertical: 39.v),
+        padding: EdgeInsets.symmetric(horizontal: 32.h, vertical: 40.v),
         child: Column(children: [
           Padding(
-              padding: EdgeInsets.only(left: 17.h),
+              padding: EdgeInsets.only(left: 16.h),
               child: CustomIconButton(
                   height: 24.adaptSize,
                   width: 24.adaptSize,
-                  padding: EdgeInsets.all(6.h),
+                  padding: EdgeInsets.all(8.h),
                   alignment: Alignment.centerLeft,
                   onTap: () {
                     controller.onPressBack();
                   },
                   child:
                       CustomImageView(imagePath: ImageConstant.imgArrowLeft))),
-          SizedBox(height: 30.v),
+          SizedBox(height: 32.v),
           CustomImageView(
               imagePath: ImageConstant.imgLogoGray5001,
               height: 105.v,
               width: 117.h),
-          SizedBox(height: 33.v),
-          Text("lbl_get_in_through".tr, style: theme.textTheme.titleMedium),
-          SizedBox(height: 33.v),
+          SizedBox(height: 32.v),
+          Text("Get in Through".tr, style: Theme.of(context).textTheme.titleMedium),
+          SizedBox(height: 32.v),
           CustomElevatedButton(
-              text: "lbl_login".tr,
+              text: "Login".tr,
               buttonStyle: CustomButtonStyles.fillDeepOrange,
               buttonTextStyle: CustomTextStyles.titleSmallSecondaryContainer,
               onPressed: () {
                 controller.onTapLogin();
               }),
-          SizedBox(height: 5.v)
+          SizedBox(height: 4.v)
         ]));
   }
 

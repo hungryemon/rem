@@ -1,6 +1,8 @@
 import 'package:rem/app/base/base_rem_controller.dart';
+import 'package:rem/app/controllers/auth_controller.dart';
 import 'package:rem/helpers/app_export.dart';
 import 'package:rem/modules/sign_in/models/sign_in_model.dart';
+import 'package:rem/routes/app_routes.dart';
 
 /// A controller class for the SignInScreen.
 ///
@@ -15,5 +17,8 @@ class SignInController extends BaseRemController {
   }
 
   ///TODO: Google Sign In when the action is triggered.
-  onTapLogin() {}
+  onTapLogin() async {
+    await AuthController.instance().signInWithGoogle();
+    Get.offAndToNamed(AppRoutes.home);
+  }
 }
