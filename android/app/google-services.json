@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "942938781451",
+    "project_id": "rem-flutter",
+    "storage_bucket": "rem-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942938781451:android:21d1a54070c93c9d96940e",
+        "android_client_info": {
+          "package_name": "com.rem.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942938781451-1je4t1sqop06fdvq13aj18mvsvqe0u18.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcZnUcJYh1WTJu5Gtt2lwTOgLXP9rGBi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942938781451-1je4t1sqop06fdvq13aj18mvsvqe0u18.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "942938781451-rlevvm1vipba1ofjjgrhtt6nchnh59p0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.rem.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
