@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rem/helpers/app_export.dart';
 
+import '../../../helpers/constants/color_constants.dart';
+
 class RemCardTask extends StatelessWidget {
   RemCardTask({
     super.key,
@@ -29,14 +31,14 @@ class RemCardTask extends StatelessWidget {
         decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.black12)),
+            border: Border.all(color: ColorConstants.remBlack40)),
         child: Material(
-          color: Colors.transparent,
+          color: ColorConstants.transparent,
           child: InkWell(
             splashFactory: InkSparkle.splashFactory,
             borderRadius: BorderRadius.circular(12),
             onTap: onPressCard,
-            splashColor: Colors.transparent,
+            splashColor: ColorConstants.transparent,
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: Row(
@@ -88,9 +90,9 @@ class RemCardTask extends StatelessWidget {
                   width: 4,
                 ),
                 Text(
-                  dateTime.format(),
+                  dateTime.format('dd-MM-yyyy hh:mm a'),
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      color: isDarkMode ? Colors.white60 : Colors.black54),
+                      color: isDarkMode ? Colors.white60 : ColorConstants.remBlack60),
                 )
               ],
             ),
@@ -100,10 +102,10 @@ class RemCardTask extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                   color: status == 'Pending'
-                      ? Colors.orangeAccent
+                      ? ColorConstants.remWarning
                       : status == 'Ongoing'
-                          ? Colors.purpleAccent
-                          : Colors.greenAccent,
+                          ? ColorConstants.remOxfordBlue
+                          : ColorConstants.remSuccess,
                   borderRadius: BorderRadius.circular(8)),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
@@ -112,7 +114,7 @@ class RemCardTask extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .labelSmall
-                      ?.copyWith(color: Colors.white),
+                      ?.copyWith(color: ColorConstants.white),
                 ),
               ),
             )
@@ -131,12 +133,12 @@ class RemCardTask extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             onPressed: onPressUpdate,
             style: ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(Colors.blue)),
-            splashColor: Colors.blueAccent,
+                backgroundColor: MaterialStatePropertyAll(ColorConstants.remBlue)),
+            splashColor: ColorConstants.remBlue80,
             icon: Icon(
               Icons.edit,
               size: 24,
-              color: Colors.white,
+              color: ColorConstants.white,
             )),
         const SizedBox(
           width: 4,
@@ -144,13 +146,13 @@ class RemCardTask extends StatelessWidget {
         IconButton(
             padding: const EdgeInsets.all(8),
             style: ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(Colors.red)),
+                backgroundColor: MaterialStatePropertyAll(ColorConstants.remError)),
             onPressed: onPressDelete,
-            splashColor: Colors.redAccent,
+            splashColor: ColorConstants.remError80,
             icon: Icon(
               Icons.delete,
               size: 24,
-              color: Colors.white,
+              color: ColorConstants.white,
             )),
       ],
     );

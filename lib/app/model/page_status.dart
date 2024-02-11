@@ -1,7 +1,7 @@
 
 
 
-// import 'package:ostad/app/model/page_state.dart';
+// import 'package:rem/app/model/page_state.dart';
 
 // class PageStatus {
 //   final bool isSuccess;

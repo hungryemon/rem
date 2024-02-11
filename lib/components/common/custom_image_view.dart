@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rem/helpers/constants/color_constants.dart';
 
 class CustomImageView extends StatelessWidget {
   ///[imagePath] is required parameter for showing image
@@ -97,7 +98,7 @@ class CustomImageView extends StatelessWidget {
               width: width,
               fit: fit ?? BoxFit.contain,
               colorFilter: ColorFilter.mode(
-                  color ?? Colors.transparent, BlendMode.srcIn),
+                  color ?? ColorConstants.transparent, BlendMode.srcIn),
             ),
           );
         case ImageType.file:
@@ -119,8 +120,8 @@ class CustomImageView extends StatelessWidget {
               height: 30,
               width: 30,
               child: LinearProgressIndicator(
-                color: Colors.grey.shade200,
-                backgroundColor: Colors.grey.shade100,
+                color: ColorConstants.remBlackOverlay,
+                backgroundColor: ColorConstants.remBlackOverlay,
               ),
             ),
             errorWidget: (context, url, error) => Image.asset(

@@ -7,8 +7,10 @@ import '../../../app/base/base_rem_controller.dart';
 /// This class manages the state of the ViewTodoScreen, including the
 /// current viewTodoModelObj
 class ViewTodoController extends BaseRemController {
+  onInit() {
+    viewTodoModelObj(Get.arguments?['arg'] ?? ViewTodoModel());
+    super.onInit();
+  }
 
   Rx<ViewTodoModel> viewTodoModelObj = ViewTodoModel().obs;
-
-
 }

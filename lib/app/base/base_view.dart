@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:rem/helpers/constants/color_constants.dart';
 import '../../components/common/toast/rem_toast.dart';
 import '../model/page_state.dart';
 import '/flavors/build_config.dart';
@@ -93,9 +94,7 @@ abstract class BaseView<Controller extends BaseRemController>
 
   Widget showErrorSnackBar(String message) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      RemToast.error(
-        message,
-      );
+      RemToast.error(title: "Error".tr, msg: message);
     });
 
     return Container();
@@ -128,6 +127,8 @@ abstract class BaseView<Controller extends BaseRemController>
   }
 
   Widget _showLoading() {
-    return const CircularProgressIndicator(color: Colors.purpleAccent,);
+    return const CircularProgressIndicator(
+      color: ColorConstants.remYellow,
+    );
   }
 }

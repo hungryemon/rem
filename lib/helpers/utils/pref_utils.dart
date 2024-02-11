@@ -2,7 +2,6 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'func_utils.dart';
 
 class PreferenceManager {
   static SharedPreferences? _preference;
@@ -18,14 +17,7 @@ class PreferenceManager {
     });
   }
 
-   Future<String> getAccessToken() async {
-    try {
-    String token =  _preference?.getString('accessToken') ?? '';
-    return parseJwtToken(token);
-     } catch (e) {
-      return '';
-    }
-  }
+ 
 
 
   String getString(String key, {String defaultValue = ""}) {

@@ -1,7 +1,5 @@
 final Map<String, String> enUs = {
 
-  "lbl_login": "Login",
-  "lbl_next": "Next",
 
 // Network Error String
   "msg_network_err": "Network Error",

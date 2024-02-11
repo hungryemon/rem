@@ -1,49 +1,49 @@
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+
+import '../../../helpers/constants/color_constants.dart';
 
 class RemToast {
-  static AppBar appBar(
-      BuildContext context, String title, IconData? backIcon, Color color,
-      {void Function()? callback}) {
-    return AppBar(
-      leading: backIcon == null
-          ? null
-          : IconButton(
-              icon: Icon(backIcon, color: color),
-              onPressed: () {
-                if (callback != null) {
-                  callback();
-                } else {
-                  Navigator.pop(context);
-                }
-              },
-            ),
-      centerTitle: true,
-      title: Text(
-        title,
-        style: TextStyle(color: color, fontFamily: 'Rubik'),
-      ),
-      backgroundColor: Colors.transparent,
-      elevation: 0.0,
-    );
+  static success({
+    required String title,
+    required String msg,
+    SnackPosition snackPosition = SnackPosition.BOTTOM,
+  }) {
+    Get.snackbar(title, msg,
+        backgroundColor: ColorConstants.remSuccess,
+        colorText: ColorConstants.white,
+        snackPosition: snackPosition);
   }
 
-  static SizedBox rowHeight({double height = 30}) {
-    return SizedBox(height: height);
+  static error({
+    required String title,
+    required String msg,
+    SnackPosition snackPosition = SnackPosition.BOTTOM,
+  }) {
+    Get.snackbar(title, msg,
+        backgroundColor: ColorConstants.remError,
+        colorText: ColorConstants.white,
+        snackPosition: snackPosition);
   }
 
-  static SizedBox rowWidth({double width = 30}) {
-    return SizedBox(width: width);
+  static info({
+    required String title,
+    required String msg,
+    SnackPosition snackPosition = SnackPosition.BOTTOM,
+  }) {
+    Get.snackbar(title, msg,
+        backgroundColor: ColorConstants.remBlue,
+        colorText: ColorConstants.white,
+        snackPosition: snackPosition);
   }
 
-  static void error(String error) async {
-    await Fluttertoast.showToast(
-        msg: error,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 3,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0);
+  static warning({
+    required String title,
+    required String msg,
+    SnackPosition snackPosition = SnackPosition.BOTTOM,
+  }) {
+    Get.snackbar(title, msg,
+        backgroundColor: ColorConstants.remWarning,
+        colorText: ColorConstants.white,
+        snackPosition: snackPosition);
   }
 }

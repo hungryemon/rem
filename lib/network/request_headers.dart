@@ -1,21 +1,12 @@
-
 import 'package:dio/dio.dart';
-
-import '../helpers/utils/pref_utils.dart';
-
 
 
 class RequestHeaderInterceptor extends InterceptorsWrapper {
 
-  final PreferenceManager _preferenceManager =  PreferenceManager();
-
   final Dio dio = Dio();
 
-
-
   Map<String, String> getAdditionalHeaders() {
-    return {
-    };
+    return {};
   }
 
   @override
@@ -46,12 +37,13 @@ class RequestHeaderInterceptor extends InterceptorsWrapper {
 
   // @override
   // void onError(err, handler) async {
-   
+
   //     super.onError(err, handler);
   // }
 
   Future<Map<String, String>> getCustomHeaders() async {
-    var accessToken = await _preferenceManager.getAccessToken();
+    var accessToken = '';
+    // await _preferenceManager.getAccessToken();
 
     var customHeaders = {
       'content-type': 'application/json',

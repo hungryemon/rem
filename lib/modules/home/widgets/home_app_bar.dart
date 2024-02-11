@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../helpers/constants/color_constants.dart';
+
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   HomeAppBar({
     super.key,
@@ -49,7 +51,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       icon: Icon(
         Icons.logout,
         size: 24,
-        color: Colors.black87,
+        color: ColorConstants.remBlack80,
       ),
       onPressed: onLogout,
     );
@@ -71,7 +73,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           style: Theme.of(context)
               .textTheme
               .bodySmall
-              ?.copyWith(color: isDarkMode ? Colors.white24 : Colors.black38),
+              ?.copyWith(color: isDarkMode ? Colors.white24 : ColorConstants.remBlack40),
           softWrap: true,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -101,7 +103,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: Icon(
                   Icons.person,
                   size: 40,
-                  color: Colors.black,
+                  color: ColorConstants.remBlack,
                 ),
               ),
             ),

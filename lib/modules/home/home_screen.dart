@@ -5,8 +5,12 @@ import 'package:rem/components/common/card/rem_card_task.dart';
 import 'package:rem/data/model/response/mock_note_response.dart';
 import 'package:rem/helpers/app_export.dart';
 import 'package:rem/modules/home/widgets/home_app_bar.dart';
+import 'package:rem/modules/view_todo/models/view_todo_model.dart';
+import 'package:rem/routes/app_routes.dart';
 
 import '../../app/controllers/auth_controller.dart';
+import '../../components/common/toast/rem_toast.dart';
+import '../../helpers/constants/color_constants.dart';
 import 'controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import '../../app/base/base_view.dart';
@@ -39,7 +43,7 @@ class HomeScreen extends BaseView<HomeController> {
       backgroundColor: Theme.of(context).primaryColor,
       child: const Icon(
         Icons.add,
-        color: Colors.white,
+        color: ColorConstants.white,
       ),
     );
   }
@@ -75,7 +79,16 @@ class HomeScreen extends BaseView<HomeController> {
                           noteDialog(context,
                               note: note, dialogType: DialogType.Update);
                         },
-                        onPressCard: () {},
+                        onPressCard: () {
+                          Get.toNamed(AppRoutes.viewTodo, arguments: {
+                            'arg': ViewTodoModel(
+                              title: note.title,
+                              content: note.content,
+                              dateTime: note.dateTime,
+                              status: note.status.name,
+                            )
+                          });
+                        },
                         isDarkMode: Get.isDarkMode);
                   },
                   separatorBuilder: (context, index) {
@@ -146,9 +159,10 @@ class HomeScreen extends BaseView<HomeController> {
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
-                              border: Border.all(color: Colors.black12)),
+                              border:
+                                  Border.all(color: ColorConstants.remBlack40)),
                           child: Material(
-                            color: Colors.transparent,
+                            color: ColorConstants.transparent,
                             child: InkWell(
                               borderRadius: BorderRadius.circular(4),
                               onTap: () {
@@ -167,7 +181,8 @@ class HomeScreen extends BaseView<HomeController> {
                                 child: Text(
                                   controller.selectedDate.value
                                       .format('dd-MM-yyyy hh:mm a'),
-                                  style: TextStyle(color: Colors.blue),
+                                  style:
+                                      TextStyle(color: ColorConstants.remBlue),
                                 ),
                               ),
                             ),
@@ -183,18 +198,14 @@ class HomeScreen extends BaseView<HomeController> {
               TextButton(
                 onPressed: () {
                   if (controller.titleController.text.trim().isEmpty) {
-                    Get.snackbar(
-                      "Error",
-                      "Please Provide a Title",
-                      backgroundColor: Colors.red,
-                      colorText: Colors.white,
+                    RemToast.error(
+                      title: "Error".tr,
+                      msg: "Please Provide a Title".tr,
                     );
                   } else if (controller.contentController.text.trim().isEmpty) {
-                    Get.snackbar(
-                      "Error",
-                      "Please Provide some description",
-                      backgroundColor: Colors.red,
-                      colorText: Colors.white,
+                    RemToast.error(
+                      title: "Error".tr,
+                      msg: "Please Provide some description".tr,
                     );
                   } else {
                     if (dialogType == DialogType.Update && note != null) {
