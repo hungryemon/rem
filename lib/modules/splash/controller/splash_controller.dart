@@ -1,6 +1,7 @@
 import 'package:rem/helpers/app_export.dart';
 import 'package:rem/modules/splash/models/splash_model.dart';
 
+import '../../../app/controllers/auth_controller.dart';
 import '../../../routes/app_routes.dart';
 import '../../../app/base/base_rem_controller.dart';
 
@@ -14,7 +15,11 @@ class SplashController extends BaseRemController {
   @override
   void onReady() {
     Future.delayed(const Duration(milliseconds: 3000), () {
-      Get.offNamed(
+      AuthController.instance().currentUser() != null 
+      ? Get.offNamed(
+        AppRoutes.home,
+      )
+      : Get.offNamed(
         AppRoutes.signIn,
       );
     });

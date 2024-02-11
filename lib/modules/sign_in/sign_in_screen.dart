@@ -3,7 +3,6 @@ import 'package:rem/app/base/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:rem/helpers/app_export.dart';
 import 'package:rem/components/common/custom_elevated_button.dart';
-import 'package:rem/components/common/custom_icon_button.dart';
 import 'package:rem/modules/sign_in/controller/sign_in_controller.dart';
 
 // ignore: must_be_immutable
@@ -19,18 +18,7 @@ class SignInScreen extends BaseView<SignInController> {
         width: double.maxFinite,
         padding: EdgeInsets.symmetric(horizontal: 32.h, vertical: 40.v),
         child: Column(children: [
-          Padding(
-              padding: EdgeInsets.only(left: 16.h),
-              child: CustomIconButton(
-                  height: 24.adaptSize,
-                  width: 24.adaptSize,
-                  padding: EdgeInsets.all(8.h),
-                  alignment: Alignment.centerLeft,
-                  onTap: () {
-                    controller.onPressBack();
-                  },
-                  child:
-                      CustomImageView(imagePath: ImageConstant.imgArrowLeft))),
+    
           SizedBox(height: 32.v),
           CustomImageView(
               imagePath: ImageConstant.imgLogoGray5001,

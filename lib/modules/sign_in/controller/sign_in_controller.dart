@@ -11,14 +11,10 @@ import 'package:rem/routes/app_routes.dart';
 class SignInController extends BaseRemController {
   Rx<SignInModel> signInModelObj = SignInModel().obs;
 
-  /// Navigates to the previous screen.
-  onPressBack() {
-    Get.back();
-  }
-
-  ///TODO: Google Sign In when the action is triggered.
+  
+  // Google Sign In when the action is triggered.
   onTapLogin() async {
     await AuthController.instance().signInWithGoogle();
-    Get.offAndToNamed(AppRoutes.home);
+    Get.toNamed(AppRoutes.home);
   }
 }
