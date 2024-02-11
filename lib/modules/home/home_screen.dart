@@ -38,6 +38,7 @@ class HomeScreen extends BaseView<HomeController> {
         controller.contentController.text = '';
         controller.selectedStatus('Pending');
         controller.selectedDate(DateTime.now());
+        controller.isNotificationOn(false);
         noteDialog(context, dialogType: DialogType.Create);
       },
       backgroundColor: Theme.of(context).primaryColor,
@@ -76,6 +77,7 @@ class HomeScreen extends BaseView<HomeController> {
                           controller.contentController.text = note.content;
                           controller.selectedStatus(note.status.name);
                           controller.selectedDate(note.dateTime);
+                          controller.isNotificationOn(note.isNotificationOn);
                           noteDialog(context,
                               note: note, dialogType: DialogType.Update);
                         },
@@ -173,7 +175,7 @@ class HomeScreen extends BaseView<HomeController> {
                                     logger.d('Confirm $date');
                                     controller.selectedDate(date);
                                   },
-                                  currentTime: DateTime.now(),
+                                  currentTime: controller.selectedDate.value,
                                 );
                               },
                               child: Padding(
@@ -191,6 +193,29 @@ class HomeScreen extends BaseView<HomeController> {
                       ],
                     );
                   }),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Obx(() {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Checkbox(
+                            value: controller.isNotificationOn.value,
+                            onChanged: (val) {
+                              controller.isNotificationOn(val);
+                            }),
+                        const SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          "Remind Me".tr,
+                          style: Theme.of(context).textTheme.labelLarge,
+                        )
+                      ],
+                    );
+                  })
                 ],
               ),
             ),
@@ -210,21 +235,21 @@ class HomeScreen extends BaseView<HomeController> {
                   } else {
                     if (dialogType == DialogType.Update && note != null) {
                       controller.updateNote(
-                        id: note.id,
-                        title: controller.titleController.text,
-                        content: controller.contentController.text,
-                        status:
-                            Note.parseStatus(controller.selectedStatus.value),
-                        dateTime: controller.selectedDate.value,
-                      );
+                          id: note.id,
+                          title: controller.titleController.text,
+                          content: controller.contentController.text,
+                          status:
+                              Note.parseStatus(controller.selectedStatus.value),
+                          dateTime: controller.selectedDate.value,
+                          isNotificationOn: controller.isNotificationOn.value);
                     } else {
                       controller.addNote(
-                        title: controller.titleController.text,
-                        content: controller.contentController.text,
-                        status:
-                            Note.parseStatus(controller.selectedStatus.value),
-                        dateTime: controller.selectedDate.value,
-                      );
+                          title: controller.titleController.text,
+                          content: controller.contentController.text,
+                          status:
+                              Note.parseStatus(controller.selectedStatus.value),
+                          dateTime: controller.selectedDate.value,
+                          isNotificationOn: controller.isNotificationOn.value);
                     }
                     Navigator.of(context).pop();
                   }

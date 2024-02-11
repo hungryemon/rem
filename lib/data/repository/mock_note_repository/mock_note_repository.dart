@@ -9,6 +9,7 @@ abstract class MockNoteRepository {
     required String content,
     required NoteStatus status,
     required DateTime dateTime,
+    required bool isNotificationOn,
   });
 
    Future<Note> updateNote({
@@ -18,6 +19,7 @@ abstract class MockNoteRepository {
     required String content,
     required NoteStatus status,
     required DateTime dateTime,
+    required bool isNotificationOn,
   });
   Future<void> deleteNote({
     required String userId,

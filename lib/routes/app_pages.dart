@@ -2,8 +2,6 @@ import 'package:get/get.dart';
 
 import '../modules/splash/splash_screen.dart';
 import '../modules/splash/binding/splash_binding.dart';
-import '../modules/create_todo/binding/create_todo_binding.dart';
-import '../modules/create_todo/create_todo_screen.dart';
 import '../modules/home/binding/home_binding.dart';
 import '../modules/home/home_screen.dart';
 import '../modules/sign_in/binding/sign_in_binding.dart';
@@ -30,11 +28,6 @@ class AppPages {
       name: AppRoutes.home,
       page: () => HomeScreen(),
       binding: HomeBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.createTodo,
-      page: () => CreateTodoScreen(),
-      binding: CreateTodoBinding(),
     ),
     GetPage(
       name: AppRoutes.viewTodo,

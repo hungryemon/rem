@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rem/app/controllers/auth_controller.dart';
+import 'package:rem/app/controllers/local_notification_controller.dart';
 import 'package:rem/helpers/app_export.dart';
 import 'package:rem/modules/home/models/home_model.dart';
 import '../../../app/base/base_rem_controller.dart';
@@ -20,6 +21,8 @@ class HomeController extends BaseRemController {
     initialNote();
   }
 
+  LocalNotificationController localNotificationController = Get.find();
+
   final MockNoteRepository _mockNoteRepository =
       Get.find(tag: (MockNoteRepository).toString());
 
@@ -27,6 +30,7 @@ class HomeController extends BaseRemController {
   final TextEditingController contentController = TextEditingController();
   final Rx<DateTime> selectedDate = DateTime.now().obs;
   final Rx<String> selectedStatus = 'Pending'.obs;
+  final RxBool isNotificationOn = false.obs;
 
   initialNote() async {
     // for (var i = 0; i < 2; i++) {
@@ -52,6 +56,7 @@ class HomeController extends BaseRemController {
     required String content,
     required NoteStatus status,
     required DateTime dateTime,
+    required bool isNotificationOn,
   }) async {
     final newNote = await _mockNoteRepository.createNote(
       userId: AuthController.instance().getUserId(),
@@ -59,7 +64,18 @@ class HomeController extends BaseRemController {
       content: content,
       status: status,
       dateTime: dateTime,
+      isNotificationOn: isNotificationOn,
     );
+     if (isNotificationOn && newNote.dateTime.isAfter(DateTime.now())) {
+      await localNotificationController.stopNotificationById(newNote.id);
+      await localNotificationController.showScheduledNotification(
+          id: newNote.id, 
+          title: newNote.title, 
+          body: "Rem", 
+          date: newNote.dateTime, 
+          payload: newNote.title
+          );
+    }
     notes.add(newNote);
   }
 
@@ -69,6 +85,7 @@ class HomeController extends BaseRemController {
     required String content,
     required NoteStatus status,
     required DateTime dateTime,
+    required bool isNotificationOn,
   }) async {
     await _mockNoteRepository.updateNote(
       userId: AuthController.instance().getUserId(),
@@ -77,7 +94,9 @@ class HomeController extends BaseRemController {
       content: content,
       status: status,
       dateTime: dateTime,
+      isNotificationOn: isNotificationOn,
     );
+
     final index = notes.indexWhere((note) => note.id == id);
     if (index != -1) {
       notes[index] = Note(
@@ -86,7 +105,19 @@ class HomeController extends BaseRemController {
         content: content,
         status: status,
         dateTime: dateTime,
+        isNotificationOn: isNotificationOn,
       );
+    }
+    if (isNotificationOn && dateTime.isAfter(DateTime.now())) {
+      await localNotificationController.stopNotificationById(id);
+      await localNotificationController.showScheduledNotification(
+          id: id, title: title, 
+          body: "Rem", 
+          date: dateTime, 
+          payload:title
+          );
+    } else {
+      await localNotificationController.stopNotificationById(id);
     }
   }
 
@@ -95,6 +126,7 @@ class HomeController extends BaseRemController {
   }) async {
     await _mockNoteRepository.deleteNote(
         userId: AuthController.instance().getUserId(), id: id);
+    await localNotificationController.stopNotificationById(id);
     notes.removeWhere((note) => note.id == id);
   }
 }

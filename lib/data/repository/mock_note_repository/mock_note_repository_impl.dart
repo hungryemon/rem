@@ -31,14 +31,16 @@ class MockNoteRepositoryImpl extends BaseRemoteSource
     required String content,
     required NoteStatus status,
     required DateTime dateTime,
+    required bool isNotificationOn,
   }) async {
     final List<Note> existingNotes = await getNotes(userId: userId);
     final newNote = Note(
-      id: existingNotes.length + 1,
+      id: existingNotes.isEmpty ? 1 : existingNotes.last.id + 1,
       title: title,
       content: content,
       status: status,
       dateTime: dateTime,
+      isNotificationOn: isNotificationOn,
     );
     final updatedNotes = [...existingNotes, newNote];
     await _storage.write(key: _hashUserId(userId), value: jsonEncode(updatedNotes.map((note) => note.toJson()).toList()));
@@ -52,6 +54,7 @@ class MockNoteRepositoryImpl extends BaseRemoteSource
     required String content,
     required NoteStatus status,
     required DateTime dateTime,
+    required bool isNotificationOn,
   }) async {
     List<Note> existingNotes = await getNotes(userId: userId);
     final index = existingNotes.indexWhere((note) => note.id == id);
@@ -62,6 +65,7 @@ class MockNoteRepositoryImpl extends BaseRemoteSource
         content: content,
         status: status,
         dateTime: dateTime,
+        isNotificationOn: isNotificationOn,
       );
       existingNotes[index] = updatedNote;
       await _storage.write(key: _hashUserId(userId), value: jsonEncode(existingNotes.map((note) => note.toJson()).toList()));

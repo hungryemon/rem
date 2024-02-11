@@ -6,6 +6,7 @@ class Note {
   final String content;
   final NoteStatus status;
   final DateTime dateTime;
+  final bool isNotificationOn;
 
   Note({
     required this.id,
@@ -13,15 +14,17 @@ class Note {
     required this.content,
     required this.status,
     required this.dateTime,
+    required this.isNotificationOn,
   });
 
-   factory Note.fromJson(Map<String, dynamic> json) {
+  factory Note.fromJson(Map<String, dynamic> json) {
     return Note(
       id: json['id'] as int,
       title: json['title'] as String,
       content: json['content'] as String,
       status: parseStatus(json['status']),
       dateTime: DateTime.parse(json['dateTime'] as String),
+      isNotificationOn: json['isNotificationOn'] ?? false,
     );
   }
 
@@ -32,10 +35,11 @@ class Note {
       'content': content,
       'status': status.name,
       'dateTime': dateTime.toIso8601String(),
+      'isNotificationOn': isNotificationOn,
     };
   }
 
-   static NoteStatus parseStatus(String status) {
+  static NoteStatus parseStatus(String status) {
     switch (status) {
       case 'Pending':
         return NoteStatus.Pending;
@@ -47,7 +51,4 @@ class Note {
         throw Exception('Unknown status: $status');
     }
   }
-
- 
-  
 }
