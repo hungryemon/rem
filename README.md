@@ -20,7 +20,7 @@ Flutter SDK Version 3.16.0 or greater.
 ├── lib                           - Most important folder in the application, used to write most of the Dart code..
     ├── main.dart                 - Starting point of the application
     ├── rem.dart                  - THE APP!
-    ├── app                       - It contains all the base/initial view, controller, bindings, controller, services etc to structure the app
+    ├── app                       - It contains all the base/initial view, controller, bindings, services etc to structure the app
     ├── helpers
     │   ├── app_export.dart       - It contains commonly used file imports
     │   ├── constants             - It contains all constants classes               
