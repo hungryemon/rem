@@ -60,8 +60,6 @@ Flutter SDK Version 3.16.0 or greater.
   https://pub.dev/packages/firebase_auth
 - google_sign_in: - To access Google Sign-In
   https://pub.dev/packages/google_sign_in
-- google_sign_in: - To access Google Sign-In
-  https://pub.dev/packages/google_sign_in
 - crypto: - For Encrypting userId to do CRUD operation for notes
   https://pub.dev/packages/crypto
 - flutter_secure_storage: - For Storing notes
