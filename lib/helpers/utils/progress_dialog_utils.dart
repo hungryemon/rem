@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import '../constants/color_constants.dart';
+import '../app_export.dart';
 
 class ProgressDialogUtils {
   static bool isProgressVisible = false;

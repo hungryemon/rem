@@ -1,4 +1,3 @@
-import 'package:rem/app/base/base_rem_controller.dart';
 import 'package:rem/app/controllers/auth_controller.dart';
 import 'package:rem/helpers/app_export.dart';
 import 'package:rem/modules/sign_in/models/sign_in_model.dart';

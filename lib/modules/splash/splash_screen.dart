@@ -1,7 +1,6 @@
 import 'controller/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:rem/helpers/app_export.dart';
-import '../../app/base/base_view.dart';
 
 // ignore: must_be_immutable
 class SplashScreen extends BaseView<SplashController> {

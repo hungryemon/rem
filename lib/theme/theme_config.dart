@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../helpers/app_export.dart';
-import '../helpers/constants/color_constants.dart';
 
 class ThemeConfig {
   static ThemeData createTheme({

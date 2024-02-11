@@ -1,19 +1,15 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
-import 'package:get/get.dart';
 import 'package:rem/components/common/card/rem_card_task.dart';
 import 'package:rem/data/model/response/mock_note_response.dart';
 import 'package:rem/helpers/app_export.dart';
 import 'package:rem/modules/home/widgets/home_app_bar.dart';
 import 'package:rem/modules/view_todo/models/view_todo_model.dart';
 import 'package:rem/routes/app_routes.dart';
-
 import '../../app/controllers/auth_controller.dart';
 import '../../components/common/toast/rem_toast.dart';
-import '../../helpers/constants/color_constants.dart';
 import 'controller/home_controller.dart';
 import 'package:flutter/material.dart';
-import '../../app/base/base_view.dart';
 
 // ignore_for_file: must_be_immutable
 class HomeScreen extends BaseView<HomeController> {

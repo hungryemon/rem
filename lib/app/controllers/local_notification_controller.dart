@@ -110,7 +110,7 @@ class LocalNotificationController extends BaseRemController {
       RepeatInterval.everyMinute,
       details,
       payload: payload,
-      androidAllowWhileIdle: true,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
     );
   }
 

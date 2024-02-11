@@ -3,7 +3,6 @@ import 'package:rem/app/controllers/auth_controller.dart';
 import 'package:rem/app/controllers/local_notification_controller.dart';
 import 'package:rem/helpers/app_export.dart';
 import 'package:rem/modules/home/models/home_model.dart';
-import '../../../app/base/base_rem_controller.dart';
 import '../../../data/model/response/mock_note_response.dart';
 import '../../../data/repository/mock_note_repository/mock_note_repository.dart';
 

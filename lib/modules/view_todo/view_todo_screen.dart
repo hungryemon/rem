@@ -1,10 +1,7 @@
 import 'package:rem/helpers/app_export.dart';
-import 'package:rem/helpers/utils/date_time_utils.dart';
 
-import '../../helpers/constants/color_constants.dart';
 import 'controller/view_todo_controller.dart';
 import 'package:flutter/material.dart';
-import '../../app/base/base_view.dart';
 
 // ignore: must_be_immutable
 class ViewTodoScreen extends BaseView<ViewTodoController> {

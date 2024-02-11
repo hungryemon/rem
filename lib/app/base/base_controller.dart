@@ -75,7 +75,8 @@ abstract class BaseController extends SuperController {
         ? onStart()
         : !hideLoader
             ? showLoading()
-            : () {};
+            // ignore: unnecessary_statements
+            : null;
 
     try {
       final T response = await future;
@@ -83,7 +84,6 @@ abstract class BaseController extends SuperController {
       if (onSuccess != null) onSuccess(response);
 
       onComplete == null ? hideLoading() : onComplete();
-      onComplete2 == null ? hideLoading() : onComplete2(null);
 
       return response;
     } on ServiceUnavailableException catch (exception) {

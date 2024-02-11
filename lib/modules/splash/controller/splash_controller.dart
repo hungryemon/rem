@@ -3,7 +3,6 @@ import 'package:rem/modules/splash/models/splash_model.dart';
 
 import '../../../app/controllers/auth_controller.dart';
 import '../../../routes/app_routes.dart';
-import '../../../app/base/base_rem_controller.dart';
 
 /// A controller class for the SplashScreen.
 ///

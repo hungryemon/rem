@@ -1,6 +1,5 @@
 import 'package:rem/helpers/app_export.dart';
 import 'package:rem/modules/view_todo/models/view_todo_model.dart';
-import '../../../app/base/base_rem_controller.dart';
 
 /// A controller class for the ViewTodoScreen.
 ///
