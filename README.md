@@ -1,5 +1,5 @@
 
-# rem
+# SecureNotes
 ### Table of contents
 - [System requirements](#system-requirements)
 - [Application structure](#project-structure)
