@@ -65,15 +65,14 @@ class HomeController extends BaseRemController {
       dateTime: dateTime,
       isNotificationOn: isNotificationOn,
     );
-     if (isNotificationOn && newNote.dateTime.isAfter(DateTime.now())) {
+    if (isNotificationOn && newNote.dateTime.isAfter(DateTime.now())) {
       await localNotificationController.stopNotificationById(newNote.id);
       await localNotificationController.showScheduledNotification(
-          id: newNote.id, 
-          title: newNote.title, 
-          body: "Rem", 
-          date: newNote.dateTime, 
-          payload: newNote.title
-          );
+          id: newNote.id,
+          title: newNote.title,
+          body: "Rem",
+          date: newNote.dateTime,
+          payload: newNote.title);
     }
     notes.add(newNote);
   }
@@ -110,11 +109,7 @@ class HomeController extends BaseRemController {
     if (isNotificationOn && dateTime.isAfter(DateTime.now())) {
       await localNotificationController.stopNotificationById(id);
       await localNotificationController.showScheduledNotification(
-          id: id, title: title, 
-          body: "Rem", 
-          date: dateTime, 
-          payload:title
-          );
+          id: id, title: title, body: "Rem", date: dateTime, payload: title);
     } else {
       await localNotificationController.stopNotificationById(id);
     }
@@ -127,5 +122,12 @@ class HomeController extends BaseRemController {
         userId: AuthController.instance().getUserId(), id: id);
     await localNotificationController.stopNotificationById(id);
     notes.removeWhere((note) => note.id == id);
+  }
+
+  @override
+  void dispose() {
+    titleController.dispose();
+    contentController.dispose();
+    super.dispose();
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rem/helpers/app_export.dart';
 
-import '../../../helpers/constants/color_constants.dart';
+import '../../../components/common/button/rem_switch.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   HomeAppBar({
@@ -10,14 +10,14 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.name,
     required this.email,
     required this.isDarkMode,
-    this.onChangeTheme,
+    required this.onChangeTheme,
     this.onLogout,
   });
 
   final String photoUrl;
   final String name;
   final String email;
-  final Function()? onChangeTheme;
+  final Function(ThemeMode themeMode) onChangeTheme;
   final Function()? onLogout;
   final bool isDarkMode;
 
@@ -37,6 +37,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             width: 8,
           ),
           Expanded(child: _buildNameAndEmail(context)),
+          const SizedBox(
+            width: 8,
+          ),
+          _buildThemeToggle(context),
           const SizedBox(
             width: 8,
           ),
@@ -71,10 +75,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         Text(
           email,
-          style: Theme.of(context)
-              .textTheme
-              .bodySmall
-              ?.copyWith(color: isDarkMode ? Colors.white24 : ColorConstants.remBlack40),
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: isDarkMode ? Colors.white24 : ColorConstants.remBlack40),
           softWrap: true,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -109,6 +111,48 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
           );
+  }
+
+  _buildThemeToggle(context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 4, 0, 4),
+      child: RemSwitch(
+        value: Get.isDarkMode,
+        switchSize: RemSwitchSize.LARGE,
+        borderRadius: 30.0,
+        activeToggleColor: ColorConstants.remBlack,
+        inactiveToggleColor: ColorConstants.remYellow,
+        activeSwitchBorder: Border.all(
+          color: ColorConstants.remBlack,
+          width: 1.0,
+        ),
+        inactiveSwitchBorder: Border.all(
+          color: ColorConstants.white,
+          width: 1.0,
+        ),
+        activeColor: ColorConstants.remBlack80,
+        inactiveColor: ColorConstants.remYellowOpac,
+        activeIcon: const Padding(
+          padding: EdgeInsets.all(2.0),
+          child: Icon(
+            Icons.nightlight,
+            color: ColorConstants.remYellow,
+          ),
+        ),
+        inactiveIcon: const Padding(
+          padding: EdgeInsets.all(2.0),
+          child: Icon(
+            Icons.sunny,
+            color: ColorConstants.white,
+          ),
+        ),
+        onToggle: (val) {
+          onChangeTheme(
+            Get.isDarkMode ? ThemeMode.light : ThemeMode.dark,
+          );
+        },
+      ),
+    );
   }
 
   @override

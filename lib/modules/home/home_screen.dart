@@ -20,6 +20,9 @@ class HomeScreen extends BaseView<HomeController> {
       name: AuthController.instance().getCurrentUser()?.displayName ?? '',
       email: AuthController.instance().getCurrentUser()?.email ?? '',
       isDarkMode: Get.isDarkMode,
+      onChangeTheme: (themeMode) {
+        controller.changeThemeMode(toThemeMode: themeMode);
+      },
       onLogout: () async {
         AuthController.instance().googleSignOut();
       },

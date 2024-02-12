@@ -20,16 +20,14 @@ abstract class BaseRemController extends BaseController {
   }
 
   void changeThemeMode(
-      {required ThemeMode toThemeMode, Function()? onUpdateTheme}) {
+      {required ThemeMode toThemeMode,}) {
     ThemeMode tempToThemeMode =
         toThemeMode == ThemeMode.dark ? ThemeMode.dark : ThemeMode.light;
 
     Get.changeThemeMode(tempToThemeMode);
     preferenceManager.setBool(PreferenceManager.KEY_IS_DARK_THEME,
         toThemeMode == ThemeMode.dark ? true : false);
-    if (onUpdateTheme != null) {
-      onUpdateTheme();
-    }
+  
     if (Platform.isIOS) {
       changeStatusBarTheme(
           statusBarBrightness: toThemeMode == ThemeMode.dark
