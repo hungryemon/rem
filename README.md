@@ -14,7 +14,7 @@ Flutter SDK Version 3.16.0 or greater.
 ## Setup instructions
 
 ### Step - 1
-Clone [this] repository.
+Clone the repository.
 ```
 git clone https://github.com/hungryemon/rem
 ```
