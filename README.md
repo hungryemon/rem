@@ -32,7 +32,7 @@ git clone https://github.com/hungryemon/rem
 - Add app by selecting iOS platform
 - Download `GoogleService-Info.plist`
 - Delete existing `GoogleService-Info.plist` from Runner and add new downloaded `GoogleService-Info.plist` to runner
-- Find Replace in `ios -> Runner -> Info.plist`
+- Find and Edit the snipper in `ios -> Runner -> Info.plist`
 ```
 <key>GIDClientID</key>	
 	<string>`CLIENT_ID_FROM_GoogleService-Info.plist`</string>
