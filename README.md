@@ -1,16 +1,57 @@
 
 # SecureNotes
-### Table of contents
+## Table of contents
 - [System requirements](#system-requirements)
+- [Setup instructions](#setup-instructions)
 - [Application structure](#project-structure)
 - [Libraries and tools used](#libraries-and-tools-used)
 
-### System requirements
+## System requirements
 
 Dart SDK Version 3.0.0 or greater.
 Flutter SDK Version 3.16.0 or greater.
 
-### Application structure
+## Setup instructions
+
+### Step - 1
+Clone [this] repository.
+```
+git clone https://github.com/hungryemon/rem
+```
+
+### Step - 2
+- Create a firebase project
+- Add Google as sign in method by navigating to `Authentication -> Sign-in method -> Add new provider -> Google` 
+
+### Step - 3 : Android Configuration
+- Add app by selecting android platform
+- Add SHA Certificate `Project Settings -> {Your Android App} -> Add Fingerprint -> {Enter You SHA-1 key} -> Save` (To get your SHA-1 key follow this [guideline](https://developers.google.com/android/guides/client-auth))
+- Download `google-services.json` & replace it inside cloned repo `android -> app -> google-services.json`
+
+### Step - 4 : iOS Configuration
+- Add app by selecting iOS platform
+- Download `GoogleService-Info.plist`
+- Delete existing `GoogleService-Info.plist` from Runner and add new downloaded `GoogleService-Info.plist` to runner
+- Find Replace in `ios -> Runner -> Info.plist`
+```
+<key>GIDClientID</key>	
+	<string>`CLIENT_ID_FROM_GoogleService-Info.plist`</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+				<array>
+					<string>`REVERSED_CLIENT_ID_FROM_GoogleService-Info.plist`</string>
+				</array>
+		</dict>
+	</array>
+```
+
+
+
+## Application structure
 
 ```
 .
@@ -38,7 +79,7 @@ Flutter SDK Version 3.16.0 or greater.
     └── components                - It contains all custom widget classes  
 ```
 
-### Libraries and tools used
+## Libraries and tools used
 
 - get - State management
   https://pub.dev/packages/get
