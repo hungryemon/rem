@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rem/helpers/app_export.dart';
 
 import '../../../helpers/constants/color_constants.dart';
 
@@ -111,5 +112,5 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => AppBar().preferredSize;
+  Size get preferredSize => Size(double.infinity, 56.v);
 }
