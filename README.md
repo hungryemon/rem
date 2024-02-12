@@ -13,13 +13,13 @@ Flutter SDK Version 3.16.0 or greater.
 
 ## Setup instructions
 
-### Step - 1
+### Step - 1 : Clone
 Clone the repository.
 ```
 git clone https://github.com/hungryemon/rem
 ```
 
-### Step - 2
+### Step - 2 : Firebase
 - Create a firebase project
 - Add Google as sign in method by navigating to `Authentication -> Sign-in method -> Add new provider -> Google` 
 
