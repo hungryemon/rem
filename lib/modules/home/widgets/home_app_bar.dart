@@ -68,7 +68,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       children: [
         Text(
           name,
-          style: Theme.of(context).textTheme.titleSmall,
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(color: ColorConstants.remBlack),
           softWrap: true,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -76,7 +76,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         Text(
           email,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: isDarkMode ? Colors.white24 : ColorConstants.remBlack40),
+              color:  ColorConstants.remBlack40),
           softWrap: true,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
